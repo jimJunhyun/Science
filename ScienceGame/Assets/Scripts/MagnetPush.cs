@@ -10,6 +10,7 @@ public class MagnetPush : MonoBehaviour
 
 	int layermask;
 	Collider2D[] cols;
+	Collider2D[] prevCols;
 	private void Awake()
 	{
 		layermask = 1 << platformLayer;
@@ -18,20 +19,32 @@ public class MagnetPush : MonoBehaviour
 	void Update()
     {
 		cols = Physics2D.OverlapCircleAll(transform.position, radius, layermask);
-		if (cols.Length != 0)
+		if (prevCols != null &&prevCols.Length > 0 && cols != prevCols)
 		{
-			
-			foreach (var item in cols)
+			foreach (var item in prevCols)
 			{
-				
 				PlatformFly platform = item.GetComponent<PlatformFly>();
 				if (platform != null && platform.isHovering)
 				{
+					platform.myrig.gravityScale = 1;
+					//platform.myrig.AddForce((platform.transform.position - transform.position).normalized * power);
+				}
+			}
+		}
+		if (cols.Length > 0)
+		{
+			foreach (var item in cols)
+			{
+				PlatformFly platform = item.GetComponent<PlatformFly>();
+				if (platform != null && platform.isHovering)
+				{
+					platform.myrig.gravityScale =0;
 					platform.myrig.AddForce((platform.transform.position -transform.position).normalized * power);
 				}
 			}
-			cols = null;
+			prevCols = cols;
 		}
+		
     }
 
 	private void OnDrawGizmos()
