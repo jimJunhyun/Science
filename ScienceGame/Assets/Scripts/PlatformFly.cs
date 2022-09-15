@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PlatformFly : MonoBehaviour
 {
-	public float maxRise;
 	public Rigidbody2D myrig;
 	public float temperature;
 
@@ -28,14 +27,6 @@ public class PlatformFly : MonoBehaviour
 			EndHover();
 		}
 
-		if (isHovering)
-		{
-			myrig.gravityScale = 0;
-		}
-		else
-		{
-			myrig.gravityScale = 1;
-		}
 	}
 
 	public void StartHover()
