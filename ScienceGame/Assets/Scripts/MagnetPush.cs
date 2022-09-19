@@ -47,6 +47,11 @@ public class MagnetPush : MonoBehaviour
 		
     }
 
+	private void LateUpdate()
+	{
+		
+	}
+
 	private void OnDrawGizmos()
 	{
 		Gizmos.DrawWireSphere(transform.position, radius);

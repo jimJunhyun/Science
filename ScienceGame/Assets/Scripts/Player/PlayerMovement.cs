@@ -7,24 +7,37 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
+    [SerializeField] private float moveDetectErr;
 
     private JumpCol jumpCol;
     private Rigidbody2D playerRigidbody;
+    private Animator anim;
+    private int scaleFactor = 1;
+    private ShootMagic myShoot;
 
     private void Awake()
     {
         
         jumpCol = GetComponentInChildren<JumpCol>();
         playerRigidbody = GetComponent<Rigidbody2D>();
-
+        anim = GetComponent<Animator>();
+        myShoot = GetComponent<ShootMagic>();
     }
 
     private void Update()
     {
+		if (!myShoot.shooting)
+		{
+            Move();
+            Jump();
+		}
+        SetAnim();
+    }
 
-        Move();
-        Jump();
-
+    private void SetAnim()
+	{
+        anim.SetBool("IsGround", jumpCol.IsGround);
+        anim.SetFloat("velY", playerRigidbody.velocity.y);
     }
 
     private void Jump()
@@ -36,7 +49,7 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
         }
-
+        
     }
 
     private void Move()
@@ -46,9 +59,23 @@ public class PlayerMovement : MonoBehaviour
         float input = Input.GetAxis("Horizontal");
         bool isMove = inputRaw != 0;
         float slowSpeed = isMove ? 1.0f : 0.5f;
+        
+        if(Approximate(inputRaw, 1f, moveDetectErr))
+		{
+            scaleFactor = 1;
+		}
+        else if (Approximate(inputRaw, -1f, moveDetectErr))
+        {
+            scaleFactor = -1;
+        }
 
         playerRigidbody.velocity = new Vector2 (input * speed * slowSpeed, playerRigidbody.velocity.y);
-
+        anim.SetBool("IsMoving", isMove);
+        transform.localScale = new Vector3( scaleFactor, transform.localScale.y, transform.localScale.z);
     }
 
+    bool Approximate(float a, float b, float err)
+	{
+        return Mathf.Abs(a - b) < err;
+	}
 }
