@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637986257015681930
-    m_Hash: 647654898
+      ticks: 637988083182868797
+    m_Hash: 2814269297
   m_LockFileStatus:
     m_FilePath: C:/Users/user/Documents/GitHub/Science/ScienceGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637986257015741746
-    m_Hash: 4278931365
+      ticks: 637988083182878764
+    m_Hash: 2566028766
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
