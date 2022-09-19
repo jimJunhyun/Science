@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 875574880473468738}
   - component: {fileID: 875574880473468739}
   - component: {fileID: 875574880473468764}
+  - component: {fileID: -810542713645276263}
   m_Layer: 8
   m_Name: Platform
   m_TagString: Untagged
@@ -145,5 +146,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myrig: {fileID: 0}
-  temperature: -252.47
+  temperature: 22
   isHovering: 0
+--- !u!114 &-810542713645276263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875574880473468737}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bd30b348bf3cb747bff35c3ab5342da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heatedMax: {r: 1, g: 0, b: 0, a: 1}
+  cooledMax: {r: 0, g: 0.87397623, b: 1, a: 1}
+  maxExpedColrTemp: 256

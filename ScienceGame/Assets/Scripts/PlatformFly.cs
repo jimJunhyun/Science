@@ -36,5 +36,6 @@ public class PlatformFly : MonoBehaviour
 	public void EndHover()
 	{
 		isHovering = false;
+		myrig.gravityScale = 1;
 	}
 }
