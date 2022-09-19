@@ -7,6 +7,10 @@ public class ShootMagic : MonoBehaviour
     public float tempPerSec;
     public float maxDist;
     public int platformLayer = 8;
+	public ParticleSystem eff;
+
+	[HideInInspector]
+	public bool shooting;
     Vector2 dir;
     Vector2 mPos;
     RaycastHit2D hit;
@@ -37,25 +41,37 @@ public class ShootMagic : MonoBehaviour
 	{
 		if (Input.GetMouseButton(0))
 		{
+			shooting = true;
 			if (hit = Physics2D.Raycast(transform.position, dir, maxDist, platformLayer))
 			{
 				hit.transform.GetComponent<PlatformFly>().temperature -= tempPerSec * Time.deltaTime;
 				Debug.DrawLine(transform.position, hit.point, Color.cyan);
 			}
 			anim.SetInteger("SkillStatus", ((int)SkillStatus.Ice));
+			eff.gameObject.SetActive(true);
+			eff.transform.LookAt(eff.transform.position + (Vector3)dir);
+			ParticleSystem.MainModule m = eff.main;
+			m.startColor = Color.cyan;
 		}
 		else if (Input.GetMouseButton(1))
 		{
+			shooting = true;
 			if (hit = Physics2D.Raycast(transform.position, dir, maxDist, platformLayer))
 			{
 				hit.transform.GetComponent<PlatformFly>().temperature += tempPerSec * Time.deltaTime;
 				Debug.DrawLine(transform.position, hit.point, Color.red);
 			}
 			anim.SetInteger("SkillStatus", ((int)SkillStatus.Fire));
+			eff.gameObject.SetActive(true);
+			eff.transform.LookAt(eff.transform.position + (Vector3)dir);
+			ParticleSystem.MainModule m = eff.main;
+			m.startColor = Color.red;
 		}
 		else
 		{
 			anim.SetInteger("SkillStatus", ((int)SkillStatus.None));
+			eff.gameObject.SetActive(false);
+			shooting = false;
 		}
 	}
 }

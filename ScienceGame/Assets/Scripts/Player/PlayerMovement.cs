@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D playerRigidbody;
     private Animator anim;
     private int scaleFactor = 1;
+    private ShootMagic myShoot;
 
     private void Awake()
     {
@@ -20,15 +21,24 @@ public class PlayerMovement : MonoBehaviour
         jumpCol = GetComponentInChildren<JumpCol>();
         playerRigidbody = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        myShoot = GetComponent<ShootMagic>();
     }
 
     private void Update()
     {
-
-        Move();
-        Jump();
+		if (!myShoot.shooting)
+		{
+            Move();
+            Jump();
+		}
+        SetAnim();
     }
 
+    private void SetAnim()
+	{
+        anim.SetBool("IsGround", jumpCol.IsGround);
+        anim.SetFloat("velY", playerRigidbody.velocity.y);
+    }
 
     private void Jump()
     {
@@ -39,8 +49,7 @@ public class PlayerMovement : MonoBehaviour
             playerRigidbody.AddForce(Vector2.up * jumpPower, ForceMode2D.Impulse);
 
         }
-        anim.SetBool("IsGround", jumpCol.IsGround);
-        anim.SetFloat("velY", playerRigidbody.velocity.y);
+        
     }
 
     private void Move()
