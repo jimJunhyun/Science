@@ -5,16 +5,16 @@ m_ProjectFiles:
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637988083182868797
-    m_Hash: 2814269297
+      ticks: 637986257015681930
+    m_Hash: 647654898
   m_LockFileStatus:
     m_FilePath: C:/Users/user/Documents/GitHub/Science/ScienceGame/Packages/packages-lock.json
     m_PathExists: 1
     m_ContentTrackingEnabled: 1
     m_ModificationDate:
       serializedVersion: 2
-      ticks: 637988083182878764
-    m_Hash: 2566028766
+      ticks: 637986257015741746
+    m_Hash: 4278931365
 m_EmbeddedPackageManifests:
   m_ManifestsStatus: {}
 m_PackageAssets:
@@ -112,6 +112,7 @@ m_PackageAssets:
         - 5.2.0
         - 5.2.1
         - 5.2.3
+        - 5.2.4
         - 6.0.0-pre.1
         - 6.0.0-pre.2
         - 6.0.1
@@ -129,6 +130,7 @@ m_PackageAssets:
         - 7.0.5
         - 7.0.6
         - 7.0.7
+        - 7.0.8
         - 8.0.0-pre.3
         - 8.0.0-pre.4
         - 8.0.0
@@ -144,6 +146,7 @@ m_PackageAssets:
         - 5.2.0
         - 5.2.1
         - 5.2.3
+        - 5.2.4
         verified: 5.1.1
       dependencies:
       - name: com.unity.2d.common
@@ -336,6 +339,7 @@ m_PackageAssets:
         - 4.1.3
         - 4.2.0
         - 4.3.0
+        - 4.3.1
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.1
@@ -351,6 +355,7 @@ m_PackageAssets:
         - 6.0.3
         - 6.0.4
         - 6.0.5
+        - 6.0.6
         - 7.0.0-pre.3
         - 7.0.0-pre.4
         - 7.0.0
@@ -362,6 +367,7 @@ m_PackageAssets:
         compatible:
         - 4.2.0
         - 4.3.0
+        - 4.3.1
         verified: 4.2.0
       dependencies:
       - name: com.unity.2d.common
@@ -3789,6 +3795,7 @@ m_PackageAssets:
         - 4.0.4
         - 4.1.0
         - 4.2.0
+        - 4.2.1
         - 5.0.0-pre.1
         - 5.0.0-pre.2
         - 5.0.0
@@ -3800,6 +3807,7 @@ m_PackageAssets:
         - 6.0.2
         - 6.0.3
         - 6.0.4
+        - 6.0.5
         - 7.0.0-pre.3
         - 7.0.0-pre.4
         - 7.0.0
@@ -3810,6 +3818,7 @@ m_PackageAssets:
         compatible:
         - 4.1.0
         - 4.2.0
+        - 4.2.1
         verified: 4.1.0
       dependencies:
       - name: com.unity.2d.sprite
