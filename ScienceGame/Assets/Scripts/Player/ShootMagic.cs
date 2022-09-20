@@ -8,6 +8,10 @@ public class ShootMagic : MonoBehaviour
     public float maxDist;
     public int platformLayer = 8;
 	public ParticleSystem eff;
+	public AudioSource source;
+	public AudioClip fireSound;
+	public AudioClip iceSound;
+
 
 	[HideInInspector]
 	public bool shooting;
@@ -15,6 +19,7 @@ public class ShootMagic : MonoBehaviour
     Vector2 mPos;
     RaycastHit2D hit;
 	Animator anim;
+	bool playingsound = false;
 
 	enum SkillStatus
 	{
@@ -41,6 +46,13 @@ public class ShootMagic : MonoBehaviour
 	{
 		if (Input.GetMouseButton(0))
 		{
+			if (!playingsound)
+			{
+				playingsound = true;
+				source.clip = iceSound;
+				source.Play();
+			}
+			
 			shooting = true;
 			if (hit = Physics2D.Raycast(transform.position, dir, maxDist, platformLayer))
 			{
@@ -55,6 +67,13 @@ public class ShootMagic : MonoBehaviour
 		}
 		else if (Input.GetMouseButton(1))
 		{
+			if (!playingsound)
+			{
+				playingsound = true;
+				source.clip = fireSound;
+				source.Play();
+			}
+			
 			shooting = true;
 			if (hit = Physics2D.Raycast(transform.position, dir, maxDist, platformLayer))
 			{
@@ -69,6 +88,11 @@ public class ShootMagic : MonoBehaviour
 		}
 		else
 		{
+			if (playingsound)
+			{
+				source.Stop();
+				playingsound = false;
+			}
 			anim.SetInteger("SkillStatus", ((int)SkillStatus.None));
 			eff.gameObject.SetActive(false);
 			shooting = false;

@@ -16,7 +16,7 @@ public class MagnetPush : MonoBehaviour
 		layermask = 1 << platformLayer;
 	}
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
     {
 		cols = Physics2D.OverlapCircleAll(transform.position, radius, layermask);
 		if (prevCols != null &&prevCols.Length > 0 && cols != prevCols)
@@ -46,11 +46,6 @@ public class MagnetPush : MonoBehaviour
 		}
 		
     }
-
-	private void LateUpdate()
-	{
-		
-	}
 
 	private void OnDrawGizmos()
 	{

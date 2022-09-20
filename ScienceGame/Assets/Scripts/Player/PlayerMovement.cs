@@ -8,12 +8,14 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float jumpPower;
     [SerializeField] private float moveDetectErr;
+    [SerializeField] private AudioSource walkSound;
 
     private JumpCol jumpCol;
     private Rigidbody2D playerRigidbody;
     private Animator anim;
     private int scaleFactor = 1;
     private ShootMagic myShoot;
+    private bool playingSound = false;
 
     private void Awake()
     {
@@ -54,7 +56,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-
+		
         float inputRaw = Input.GetAxisRaw("Horizontal");
         float input = Input.GetAxis("Horizontal");
         bool isMove = inputRaw != 0;
@@ -72,6 +74,19 @@ public class PlayerMovement : MonoBehaviour
         playerRigidbody.velocity = new Vector2 (input * speed * slowSpeed, playerRigidbody.velocity.y);
         anim.SetBool("IsMoving", isMove);
         transform.localScale = new Vector3( scaleFactor, transform.localScale.y, transform.localScale.z);
+
+        if (jumpCol.IsGround && isMove && !playingSound)
+        {
+            Debug.Log("!");
+            playingSound = true;
+            walkSound.Play();
+        }
+		else if((!isMove || !jumpCol.IsGround) && playingSound)
+		{
+            playingSound = false;
+            Debug.Log("...");
+            walkSound.Stop();
+		}
     }
 
     bool Approximate(float a, float b, float err)

@@ -22,7 +22,7 @@ public class PlatformColor : MonoBehaviour
     {
         curCol = mySr.color;
 		curCol = Color.Lerp(cooledMax, heatedMax, myFly.temperature / maxExpedColrTemp + 1);
-		Debug.Log(myFly.temperature / maxExpedColrTemp);
+		//Debug.Log(myFly.temperature / maxExpedColrTemp);
 		mySr.color = curCol;
     }
 }
